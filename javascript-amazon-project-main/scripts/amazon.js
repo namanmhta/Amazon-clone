@@ -1,4 +1,4 @@
-
+import {cart} from "../data/cart";
 
 let productsHTML = '';
 
@@ -43,7 +43,7 @@ products.forEach((product) =>{
 
             <div class="product-spacer"></div>
 
-            <div class="added-to-cart">
+            <div class="added-to-cart js-added-to-cart-${product.id}">
                 <img src="images/icons/checkmark.png">
                 Added
             </div>
@@ -53,6 +53,7 @@ products.forEach((product) =>{
             </button>
             </div>`
 } )
+
 
 document.querySelector('.js-products-grid').innerHTML = productsHTML;
 
@@ -86,6 +87,15 @@ document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
         });
 
         document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+
+
+        const addedMessage = document.querySelector(`.js-added-to-cart-${productId}`);
+
+        addedMessage.classList.add('addedn');
+
+        setTimeout(()=>{
+            addedMessage.classList.remove('addedn');
+        },2000);
 
     });
 });
