@@ -6,6 +6,26 @@ import { loadCart } from "../data/cart.js";
 // import "../data/backend-practice.js";
 // import "../data/cart-oop.js";
 
+async function loadPage(){
+    console.log('load page');
+    await loadProductsfetch();
+    
+    await new Promise((resolve)=>{
+        loadCart(()=>{
+        resolve('value3');
+    });
+    }).then((value)=>{
+
+    });
+
+    renderOrderSummary();
+    renderPaymentSummary();
+    return 'value2';
+}
+loadPage();
+
+
+/*
 Promise.all([
     loadProductsfetch(),
     new Promise((resolve)=>{
@@ -32,6 +52,8 @@ new Promise((resolve) => {
         renderPaymentSummary();
     })
 });
+
+*/
 
 // loadProducts( ()=>{
 //     loadCart(()=>{
